@@ -1,0 +1,39 @@
+name: Build Geode Mobile Mod
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+          - name: Android32
+            os: ubuntu-24.04
+            target: Android32
+          - name: Android64
+            os: ubuntu-24.04
+            target: Android64
+          - name: iOS
+            os: macos-14
+            target: iOS
+
+    name: ${{ matrix.config.name }}
+    runs-on: ${{ matrix.config.os }}
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Geode CLI
+        uses: geode-sdk/cli-action@v2
+
+      - name: Build Mod
+        uses: geode-sdk/build-mod-action@v3
+        with:
+          target: ${{ matrix.config.target }}
