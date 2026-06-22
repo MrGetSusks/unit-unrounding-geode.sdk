@@ -1,0 +1,15 @@
+{
+    "geode": "4.10.2",
+    "id": "supertask1.unit_unround",
+    "version": "1.0.0",
+    "name": "Unit Unround",
+    "developer": "supertask1",
+    "description": "I made this as my first mod enjoy!",
+    "dependencies": [
+        {
+            "id": "geode.loader",
+            "version": "4.10.2",
+            "importance": "required"
+        }
+    ]
+}
